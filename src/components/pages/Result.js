@@ -1,14 +1,15 @@
+import React from "react";
+import { useLocation, useParams } from "react-router-dom";
 import _ from "lodash";
-import { useHistory, useParams } from "react-router-dom";
-import useAnswers from "../../hooks/useAnswers";
 import Analysis from "../Analysis";
 import Summary from "../Summary";
+import useAnswers from "../../hooks/useAnswers";
 
-export default function Result() {
+const Result = () => {
   const { id } = useParams();
-  const { location } = useHistory();
+  const location = useLocation();
   const { state } = location;
-  const { qna } = state;
+  const qna = state;
 
   const { loading, error, answers } = useAnswers(id);
 
@@ -28,7 +29,6 @@ export default function Result() {
       });
 
       if (_.isEqual(correctIndexes, checkedIndexes)) {
-        //lodash
         score = score + 5;
       }
     });
@@ -51,4 +51,6 @@ export default function Result() {
       )}
     </>
   );
-}
+};
+
+export default Result;

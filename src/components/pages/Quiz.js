@@ -1,7 +1,7 @@
 import { getDatabase, ref, set } from "firebase/database";
 import _ from "lodash";
 import { useEffect, useReducer, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import useQuestions from "../../hooks/useQuestions";
 import Answers from "../Answers";
@@ -20,7 +20,7 @@ const reducer = (state, action) => {
       });
       return action.value;
     case "answer":
-      const questions = _.cloneDeep(state); // lodash coppy korar jonno
+      const questions = _.cloneDeep(state);
       questions[action.questionID].options[action.optionIndex].checked =
         action.value;
 
@@ -37,7 +37,7 @@ export default function Quiz() {
 
   const [qna, dispatch] = useReducer(reducer, initialState);
   const { currentUser } = useAuth();
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     dispatch({
@@ -80,12 +80,7 @@ export default function Quiz() {
       [id]: qna,
     });
 
-    history.push({
-      pathname: `/result/${id}`,
-      state: {
-        qna,
-      },
-    });
+    history(`/result/${id}`, { state: qna });
   }
 
   // calculate percentage of progress

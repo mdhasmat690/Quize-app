@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import classes from "../styles/MiniPlayer.module.css";
 
-export default function MiniPlayer({ title, id }) {
+export default function MiniPlayer({ id }) {
   const buttonRef = useRef();
   const [status, setStatus] = useState(false);
   const videoUrl = `https://www.youtube.com/watch?v=${id}`;
@@ -41,7 +41,6 @@ export default function MiniPlayer({ title, id }) {
         playing={status}
         controls
       />
-      <p>{title}</p>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import Button from "./Button";
 import Form from "./Form";
@@ -13,10 +13,9 @@ export default function LoginForm() {
   const [loading, setLoading] = useState();
 
   const { login } = useAuth();
-  const history = useHistory();
+  const history = useNavigate();
 
   async function handleSubmit(e) {
-    console.log("error ami tomake vlo basi", e);
     e.preventDefault();
 
     try {

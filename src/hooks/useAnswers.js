@@ -25,7 +25,6 @@ export default function useAnswers(videoID) {
           });
         }
       } catch (err) {
-        console.log(err);
         setLoading(false);
         setError(true);
       }

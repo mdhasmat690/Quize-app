@@ -9,8 +9,7 @@ export default function Nav() {
       <ul>
         <li>
           <Link to="/" className={classes.brand}>
-            <img src={logo} alt="Learn with Sumit Logo" />
-            <h3>Learn with Sumit</h3>
+            <h3>Test your skill</h3>
           </Link>
         </li>
       </ul>

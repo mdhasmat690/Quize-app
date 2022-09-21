@@ -31,7 +31,6 @@ export default function useVideoList(page) {
         setError(false);
         setLoading(true);
         // request firebase database
-
         const snapshot = await get(videoQuery);
         setLoading(false);
         if (snapshot.exists()) {
