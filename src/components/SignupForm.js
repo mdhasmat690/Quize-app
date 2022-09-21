@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-
+import { useAuth } from "../contexts/AuthContext";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import Form from "./Form";
@@ -21,7 +20,6 @@ export default function SignupForm() {
   const history = useHistory();
 
   async function handleSubmit(e) {
-    console.log("click");
     e.preventDefault();
     // do validation
     if (password !== confirmPassword) {
