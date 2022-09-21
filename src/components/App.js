@@ -7,20 +7,34 @@ import Login from "./pages/Login";
 import Quiz from "./pages/Quiz";
 import Result from "./pages/Result";
 import Signup from "./pages/Signup";
+import PrivetRoute from "./PrivateRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="/quiz/:id" element={<Quiz />} />
-            <Route path="/result/:id" element={<Result />} />
-          </Routes>
-        </Layout>
+        <Layout />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
+          <Route
+            path="/quiz/:id"
+            element={
+              <PrivetRoute>
+                <Quiz />
+              </PrivetRoute>
+            }
+          />
+          <Route
+            path="/result/:id"
+            element={
+              <PrivetRoute>
+                <Result />
+              </PrivetRoute>
+            }
+          />
+        </Routes>
       </AuthProvider>
     </BrowserRouter>
   );

@@ -30,7 +30,7 @@ export default function SignupForm() {
       setError("");
       setLoading(true);
       await signup(email, password, username);
-      history.push("/");
+      history("/");
     } catch (err) {
       console.log(err);
       setLoading(false);
